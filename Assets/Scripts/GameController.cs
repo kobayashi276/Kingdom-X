@@ -10,6 +10,11 @@ public class GameController : MonoBehaviour
     public GameObject player;
     public TextMeshProUGUI energyCount;
     public GameObject terrain;
+    public GameObject energy;
+    public GameObject background;
+    public GameObject eatItem;
+    public GameObject destroyEnemies;
+    public GameObject enemies;
     // public GameObject terrainDestroyer;
 
     private PlayerController playerController;
@@ -17,10 +22,14 @@ public class GameController : MonoBehaviour
     private Vector3 playerPosition;
     private bool isInitEnabled;
     private bool isPreviousNullTerrian;
+    private bool isInitBackgroundEnabled;
+    private bool isInitEnemiesEnabled;
     // Start is called before the first frame update
     void Start()
     {
         isPreviousNullTerrian = false;
+        isInitBackgroundEnabled = false;
+        isInitEnemiesEnabled = false;
         playerController = player.GetComponent<PlayerController>();
         cameraPosition = camera.transform.position;
         isInitEnabled = true;
@@ -29,7 +38,7 @@ public class GameController : MonoBehaviour
     public void setEnergy(int ammount){
         int energy = int.Parse(energyCount.text.Substring(1));
         int newEnergy = energy + ammount;
-        energyCount.text = "x" + newEnergy.ToString();
+        energyCount.text = "x " + newEnergy.ToString();
     }
 
 
@@ -44,7 +53,6 @@ public class GameController : MonoBehaviour
         //Move camera with player
         playerPosition = player.transform.position;
         camera.transform.position = new Vector3(playerPosition.x + 7.33f,cameraPosition.y,cameraPosition.z);
-
         //Destroy terrian unuse
     //    terrainDestroyer.transform.position = new Vector3(playerPosition.x-0,0,0);
         GameObject[] terrains = GameObject.FindGameObjectsWithTag("Terrian");
@@ -62,6 +70,7 @@ public class GameController : MonoBehaviour
                 GameObject instance = Instantiate(terrain);
                 instance.transform.position = new Vector3((float)Math.Round(playerPosition.x) + 30,0,0);
                 isPreviousNullTerrian = false;
+                spawnEnergy();
             }   
             else{
                 isPreviousNullTerrian = true;
@@ -71,5 +80,56 @@ public class GameController : MonoBehaviour
         else if (Math.Round(playerPosition.x)%3!=0){
             isInitEnabled = true;
         }
+
+        //Spawn background
+        random = new System.Random();
+        randomNumber = random.NextDouble();
+
+        if (Math.Round(playerPosition.x)%24==0 && isInitBackgroundEnabled){
+            GameObject instance = Instantiate(background);
+            instance.transform.position = new Vector3((float)Math.Round(playerPosition.x) + 48,0,0);
+            isInitBackgroundEnabled = false;
+        }
+        else if (Math.Round(playerPosition.x)%24!=0){
+            isInitBackgroundEnabled = true;
+        }
+
+        //Spawn enemies
+        random = new System.Random();
+        randomNumber = random.NextDouble();
+
+        if (Math.Round(playerPosition.x)%24==0 && isInitEnemiesEnabled){
+            GameObject instance = Instantiate(enemies);
+            instance.transform.position = new Vector3((float)Math.Round(playerPosition.x) + 24,0,0);
+            isInitEnemiesEnabled = false;
+        }
+        else if(Math.Round(playerPosition.x)%24!=0){
+            isInitEnemiesEnabled = true;
+        }
+
     }
+
+    //Spawn energy
+    private void spawnEnergy(){
+        System.Random random = new System.Random();
+        double randomNumber = random.NextDouble();
+        if (randomNumber<0.4){
+            GameObject instance = Instantiate(energy);
+            random = new System.Random();
+            float position = (float)random.NextDouble() * 3;
+            instance.transform.position = new Vector3((float)Math.Round(playerPosition.x) + 30,position-3,0);
+        }
+        
+    }
+
+    public void eatItemAnimation(Vector3 position){
+        GameObject instance = Instantiate(eatItem);
+        instance.transform.position = position;
+    }
+
+    public void destroyEnemiesAnimation(Vector3 position){
+        GameObject instance = Instantiate(destroyEnemies);
+        instance.transform.position = position;
+    }
+
 }

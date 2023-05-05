@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody2D rb;
     private Animator animation;
-    private Transform transform;
+    // private Transform transform;
     private bool isJumping;
     private GameController gameController;
 
@@ -29,8 +29,6 @@ public class PlayerController : MonoBehaviour
 
         MovementState state;
         rb =  GetComponent<Rigidbody2D>();
-        rb.sharedMaterial = new PhysicsMaterial2D("NoBounce");
-        rb.sharedMaterial.bounciness = 0;
         rb.freezeRotation = true;
         animation = GetComponent<Animator>();
         state = MovementState.running;
@@ -41,6 +39,10 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (transform.position.y<-4){
+            gameObject.SetActive(false);
+        }
+
         // Debug.Log(isJumping);
         if (Input.GetKey("space") && !isJumping)
         {
@@ -58,6 +60,7 @@ public class PlayerController : MonoBehaviour
             other.gameObject.SetActive(false);
             gameController.setEnergy(1);
             Debug.Log("Eat energy");
+            gameController.eatItemAnimation(other.gameObject.transform.position);
             Destroy(other.gameObject);
         }
     }
@@ -68,7 +71,11 @@ public class PlayerController : MonoBehaviour
         }
         if (other.gameObject.CompareTag("Enemies")){
             if (gameController.getEnergy()<4) gameObject.SetActive(false);
-            else Destroy(other.gameObject);
+            else{
+                gameController.destroyEnemiesAnimation(other.transform.position);
+                Destroy(other.gameObject);
+                gameController.setEnergy(-4);
+            } 
         }
     }
 
