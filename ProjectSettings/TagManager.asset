@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Terrian
   - Enemies
+  - Energy
+  - Gameplay_UI
   layers:
   - Default
   - TransparentFX
