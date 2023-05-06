@@ -9,8 +9,10 @@ public class GameController : MonoBehaviour
     public GameObject camera;
     public GameObject player;
     public TextMeshProUGUI energyCount;
+    public TextMeshProUGUI gemCount;
     public GameObject terrain;
     public GameObject energy;
+    public GameObject gem;
     public GameObject background;
     public GameObject eatItem;
     public GameObject destroyEnemies;
@@ -46,6 +48,18 @@ public class GameController : MonoBehaviour
         return int.Parse(energyCount.text.Substring(1));
 
     }
+
+    public void setGem(int ammount){
+        int gem = int.Parse(gemCount.text);
+        int newGem = gem + ammount;
+        gemCount.text = newGem.ToString();
+    }
+
+
+    public int getGem(){
+        return int.Parse(gemCount.text.Substring(1));
+
+    }
  
     // Update is called once per frame
     void Update()
@@ -53,11 +67,17 @@ public class GameController : MonoBehaviour
         //Move camera with player
         playerPosition = player.transform.position;
         camera.transform.position = new Vector3(playerPosition.x + 7.33f,cameraPosition.y,cameraPosition.z);
+
         //Destroy terrian unuse
-    //    terrainDestroyer.transform.position = new Vector3(playerPosition.x-0,0,0);
         GameObject[] terrains = GameObject.FindGameObjectsWithTag("Terrian");
-        if (terrains.Length>20){
+        if (terrains.Length>30){
             Destroy(terrains[0].gameObject);
+        }
+
+        //Destroy energy unuse
+        GameObject[] energies = GameObject.FindGameObjectsWithTag("Energy");
+        if (energies.Length>50){
+            Destroy(energies[0].gameObject);
         }
 
         //Spawn terrian
@@ -65,12 +85,13 @@ public class GameController : MonoBehaviour
         double randomNumber = random.NextDouble();
 
         if (Math.Round(playerPosition.x)%3==0 && isInitEnabled){
-            Debug.Log("Chance: " + randomNumber.ToString());
-            if (randomNumber<0.7 || isPreviousNullTerrian){
+            if (randomNumber<0.8 || isPreviousNullTerrian){
                 GameObject instance = Instantiate(terrain);
                 instance.transform.position = new Vector3((float)Math.Round(playerPosition.x) + 30,0,0);
                 isPreviousNullTerrian = false;
-                spawnEnergy();
+                 if (!spawnEnergy()){
+                    spawnGem();
+                 }
             }   
             else{
                 isPreviousNullTerrian = true;
@@ -99,6 +120,7 @@ public class GameController : MonoBehaviour
         randomNumber = random.NextDouble();
 
         if (Math.Round(playerPosition.x)%24==0 && isInitEnemiesEnabled){
+            Debug.Log("Spawn Enemy");
             GameObject instance = Instantiate(enemies);
             instance.transform.position = new Vector3((float)Math.Round(playerPosition.x) + 24,0,0);
             isInitEnemiesEnabled = false;
@@ -110,16 +132,32 @@ public class GameController : MonoBehaviour
     }
 
     //Spawn energy
-    private void spawnEnergy(){
+    private bool spawnEnergy(){
         System.Random random = new System.Random();
         double randomNumber = random.NextDouble();
-        if (randomNumber<0.4){
+        if (randomNumber<0.3){
             GameObject instance = Instantiate(energy);
             random = new System.Random();
             float position = (float)random.NextDouble() * 3;
             instance.transform.position = new Vector3((float)Math.Round(playerPosition.x) + 30,position-3,0);
+            return true;
         }
+        return false;
         
+    }
+
+    //Spawn gem
+    private bool spawnGem(){
+        System.Random random = new System.Random();
+        double randomNumber = random.NextDouble();
+        if (randomNumber<0.4){
+            GameObject instance = Instantiate(gem);
+            random = new System.Random();
+            float position = (float)random.NextDouble() * 3;
+            instance.transform.position = new Vector3((float)Math.Round(playerPosition.x) + 30,position-3,0);
+            return true;
+        }
+        return false;
     }
 
     public void eatItemAnimation(Vector3 position){

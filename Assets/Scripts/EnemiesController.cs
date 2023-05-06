@@ -18,5 +18,8 @@ public class EnemiesController : MonoBehaviour
     void Update()
     {
         rb.velocity = new Vector2(-1,rb.velocity.y) * runningSpeed;
+        if (transform.position.y < -10){
+            Destroy(gameObject);
+        }
     }
 }

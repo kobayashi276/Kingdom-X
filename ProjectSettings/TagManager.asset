@@ -8,6 +8,7 @@ TagManager:
   - Enemies
   - Energy
   - Gameplay_UI
+  - Gem
   layers:
   - Default
   - TransparentFX

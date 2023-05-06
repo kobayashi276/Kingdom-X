@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     public float jumpPower;
     public float runningSpeed;
+    public GameObject playerDeadAnimation;
 
     private Rigidbody2D rb;
     private Animator animation;
@@ -24,7 +25,8 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         GameObject[] gameControllerObject = GameObject.FindGameObjectsWithTag("GameController");
-        gameController = gameControllerObject[0].GetComponent<GameController>();
+        if (gameControllerObject.Length!=0)
+            gameController = gameControllerObject[0].GetComponent<GameController>();
 
 
         MovementState state;
@@ -39,7 +41,8 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (transform.position.y<-4){
+        //Falling to dead
+        if (transform.position.y<-6){
             gameObject.SetActive(false);
         }
 
@@ -63,24 +66,40 @@ public class PlayerController : MonoBehaviour
             gameController.eatItemAnimation(other.gameObject.transform.position);
             Destroy(other.gameObject);
         }
+        if (other.gameObject.CompareTag("Gem")){
+            other.gameObject.SetActive(false);
+            gameController.setGem(1);
+            Debug.Log("Eat gem");
+            gameController.eatItemAnimation(other.gameObject.transform.position);
+            Destroy(other.gameObject);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D other) {
         if (other.gameObject.CompareTag("Terrian")){
             isJumping = false;
         }
+
         if (other.gameObject.CompareTag("Enemies")){
-            if (gameController.getEnergy()<4) gameObject.SetActive(false);
+            if (gameController.getEnergy()<4){
+                gameObject.SetActive(false);
+                GameObject instance = Instantiate(playerDeadAnimation);
+                instance.transform.position = transform.position;
+            } 
             else{
                 gameController.destroyEnemiesAnimation(other.transform.position);
                 Destroy(other.gameObject);
                 gameController.setEnergy(-4);
+                gameController.setGem(2);
             } 
         }
     }
 
     private void UpdateAnimation(){
-        if (rb.velocity.y > .1f){
+        if (rb.velocity.x ==0){
+            state = MovementState.idle;
+        }
+        else if (rb.velocity.y > .1f){
             state = MovementState.jumping;
         }
         else if (rb.velocity.y < -.1f){
