@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class EnergyAnimation : MonoBehaviour
 {
+    public float range;
+    public float speed;
+
     private float up;
     private float down;
     private bool isUp;
@@ -11,8 +14,8 @@ public class EnergyAnimation : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        up = transform.position.y + 0.25f;
-        down = transform.position.y - 0.25f;
+        up = transform.position.y + range;
+        down = transform.position.y - range;
         isUp = true;
     }
 
@@ -27,10 +30,10 @@ public class EnergyAnimation : MonoBehaviour
         }
 
         if (isUp){
-            transform.position = new Vector3(transform.position.x,transform.position.y+0.001f,0);
+            transform.position = new Vector3(transform.position.x,transform.position.y+speed,0);
         }
         else{
-            transform.position = new Vector3(transform.position.x,transform.position.y-0.001f,0);
+            transform.position = new Vector3(transform.position.x,transform.position.y-speed,0);
         }
     }
 }

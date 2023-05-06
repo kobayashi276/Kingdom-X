@@ -17,6 +17,8 @@ public class GameController : MonoBehaviour
     public GameObject eatItem;
     public GameObject destroyEnemies;
     public GameObject enemies;
+    public GameObject gameOverUI;
+    public GameObject pauseUI;
     // public GameObject terrainDestroyer;
 
     private PlayerController playerController;
@@ -35,17 +37,19 @@ public class GameController : MonoBehaviour
         playerController = player.GetComponent<PlayerController>();
         cameraPosition = camera.transform.position;
         isInitEnabled = true;
+        gameOverUI.SetActive(false);
+        pauseUI.SetActive(false);
     }
 
     public void setEnergy(int ammount){
-        int energy = int.Parse(energyCount.text.Substring(1));
+        int energy = int.Parse(energyCount.text);
         int newEnergy = energy + ammount;
-        energyCount.text = "x " + newEnergy.ToString();
+        energyCount.text = newEnergy.ToString();
     }
 
 
     public int getEnergy(){
-        return int.Parse(energyCount.text.Substring(1));
+        return int.Parse(energyCount.text);
 
     }
 
@@ -57,8 +61,32 @@ public class GameController : MonoBehaviour
 
 
     public int getGem(){
-        return int.Parse(gemCount.text.Substring(1));
+        return int.Parse(gemCount.text);
+    }
 
+    public void gameOver(){
+        gameOverUI.SetActive(true);
+    }
+
+    public void Pause(){
+        pauseUI.SetActive(true);
+        Time.timeScale = 0f;
+    }
+
+    public void Resume(){
+        pauseUI.SetActive(false);
+        Time.timeScale = 1f;
+    }
+
+    public void backToMenu()
+    {
+        Time.timeScale = 1f;
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Menu");
+    }
+
+    public void retry()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Gameplay");
     }
  
     // Update is called once per frame

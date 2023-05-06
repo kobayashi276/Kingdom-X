@@ -34,12 +34,12 @@ public class MainMenu : MonoBehaviour
 
         public void goToMission()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Mission");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Shop");
     }
 
         public void goToUpgrades()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Upgrades");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Shop");
     }
 
     public void goToAbout()

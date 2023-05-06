@@ -9,6 +9,12 @@ TagManager:
   - Energy
   - Gameplay_UI
   - Gem
+  - Gem_Count
+  - Item1
+  - Item2
+  - Item3
+  - Item4
+  - Item5
   layers:
   - Default
   - TransparentFX

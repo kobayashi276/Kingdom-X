@@ -42,8 +42,11 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         //Falling to dead
-        if (transform.position.y<-6){
-            gameObject.SetActive(false);
+        if (transform.position.y<-3.5f && (int)state!=0){
+            transform.position = new Vector3(transform.position.x,transform.position.y-0.1f,transform.position.z);
+        }
+        if (transform.position.y<-7){
+            Dead();
         }
 
         // Debug.Log(isJumping);
@@ -82,9 +85,7 @@ public class PlayerController : MonoBehaviour
 
         if (other.gameObject.CompareTag("Enemies")){
             if (gameController.getEnergy()<4){
-                gameObject.SetActive(false);
-                GameObject instance = Instantiate(playerDeadAnimation);
-                instance.transform.position = transform.position;
+                Dead();
             } 
             else{
                 gameController.destroyEnemiesAnimation(other.transform.position);
@@ -93,6 +94,13 @@ public class PlayerController : MonoBehaviour
                 gameController.setGem(2);
             } 
         }
+    }
+
+    private void Dead(){
+        gameObject.SetActive(false);
+        GameObject instance = Instantiate(playerDeadAnimation);
+        instance.transform.position = transform.position;
+        gameController.gameOver();
     }
 
     private void UpdateAnimation(){
