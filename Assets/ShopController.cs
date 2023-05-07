@@ -42,25 +42,33 @@ public class ShopController : MonoBehaviour
     }
 
     private void LoadGame(){
+        string saveString = "";
          if (File.Exists(Application.dataPath + "/data.save")){
-            string saveString = File.ReadAllText(Application.dataPath + "/data.save");
-            string[] saveSplit = saveString.Split(",");
-            Debug.Log(saveSplit.Length);
-            GameObject[] temp = GameObject.FindGameObjectsWithTag("Gem_Count");
-            temp[0].GetComponent<TextMeshProUGUI>().text = saveSplit[0].ToString();
-            item1Text.text = saveSplit[1].ToString();
-            item2Text.text = saveSplit[2].ToString();
-            item3Text.text = saveSplit[3].ToString();
-            item4Text.text = saveSplit[4].ToString();
-            item5Text.text = saveSplit[5].ToString();
-
-            currentGem = int.Parse(temp[0].GetComponent<TextMeshProUGUI>().text);
-            item1 = int.Parse(item1Text.text);
-            item2 = int.Parse(item2Text.text);
-            item3 = int.Parse(item3Text.text);
-            item4 = int.Parse(item4Text.text);
-            item5 = int.Parse(item5Text.text);
+            saveString = File.ReadAllText(Application.dataPath + "/data.save");
          }
+         else{
+            saveString = "0,0,0,0,0,0,";
+         }
+         ReadData(saveString);
+    }
+
+    private void ReadData(string saveString){
+        string[] saveSplit = saveString.Split(",");
+        Debug.Log(saveSplit.Length);
+        GameObject[] temp = GameObject.FindGameObjectsWithTag("Gem_Count");
+        temp[0].GetComponent<TextMeshProUGUI>().text = saveSplit[0].ToString();
+        item1Text.text = saveSplit[1].ToString();
+        item2Text.text = saveSplit[2].ToString();
+        item3Text.text = saveSplit[3].ToString();
+        item4Text.text = saveSplit[4].ToString();
+        item5Text.text = saveSplit[5].ToString();
+
+        currentGem = int.Parse(temp[0].GetComponent<TextMeshProUGUI>().text);
+        item1 = int.Parse(item1Text.text);
+        item2 = int.Parse(item2Text.text);
+        item3 = int.Parse(item3Text.text);
+        item4 = int.Parse(item4Text.text);
+        item5 = int.Parse(item5Text.text);
     }
 
     private void Alert(){
@@ -138,11 +146,11 @@ public class ShopController : MonoBehaviour
     }
 
     public void Item4(){
-        if (currentGem<100){
+        if (currentGem<250){
             Debug.Log("Cant buy");
         }
         else{
-            currentGem-=100;
+            currentGem-=250;
             item4+=1;
             setAmmount(4,item4);
             updateGem();

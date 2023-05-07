@@ -28,6 +28,7 @@ public class GameController : MonoBehaviour
     private bool isPreviousNullTerrian;
     private bool isInitBackgroundEnabled;
     private bool isInitEnemiesEnabled;
+    private float preX;
     // Start is called before the first frame update
     void Start()
     {
@@ -39,6 +40,7 @@ public class GameController : MonoBehaviour
         isInitEnabled = true;
         gameOverUI.SetActive(false);
         pauseUI.SetActive(false);
+        preX = transform.position.x;
     }
 
     public void setEnergy(int ammount){
