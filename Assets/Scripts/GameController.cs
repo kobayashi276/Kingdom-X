@@ -175,6 +175,12 @@ public class GameController : MonoBehaviour
             if (randomNumber<0.8 || isPreviousNullTerrian){
                 GameObject instance = Instantiate(terrain);
                 instance.transform.position = new Vector3((float)Math.Round(playerPosition.x) + 30,0,0);
+                instance.layer = LayerMask.NameToLayer("Ground");
+                foreach (Transform child in instance.GetComponentsInChildren<Transform>(true))  
+                {
+                    child.gameObject.layer = LayerMask.NameToLayer("Ground");  // add any layer you want. 
+                }
+
                 isPreviousNullTerrian = false;
                  if (!spawnEnergy()){
                     spawnGem();

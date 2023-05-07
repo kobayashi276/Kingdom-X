@@ -21,6 +21,14 @@ public class PlayerController : MonoBehaviour
     private float boostSpeed;
     private float jumpBoost;
 
+    private bool isGrounded;
+    public Transform feetPos;
+    public float checkRadius;
+    public LayerMask whatIsGround;
+
+    private float jumpTimeCounter;
+    public float jumpTime;
+
     private AudioSource sfx_jump;
     private AudioSource sfx_pickupenergy;
     private AudioSource sfx_pickupgem;
@@ -83,13 +91,28 @@ public class PlayerController : MonoBehaviour
             Dead();
         }
 
-        // Debug.Log(isJumping);
-        if (Input.GetKey("space") && !isJumping)
+        isGrounded = Physics2D.OverlapCircle(feetPos.position, checkRadius, whatIsGround);
+        print("rb.velocity "+rb.velocity);
+        if (Input.GetKey("space") && isGrounded == true)
         {
-            Debug.Log("Jump");
             rb.velocity = new Vector3(0, jumpPower*jumpBoost, 0); 
             isJumping = true;
+            jumpTimeCounter = jumpTime;
             sfx_jump.Play(0);
+        }
+
+        if (Input.GetKey("space") && isJumping == true) {
+
+            if (jumpTimeCounter > 0) {
+                rb.velocity = new Vector3(0, jumpPower*jumpBoost, 0); 
+                jumpTimeCounter -= Time.deltaTime;
+            } else {
+                isJumping = false;
+            }
+        }
+
+        if (Input.GetKeyUp("space")) {
+            isJumping = false;
         }
 
         //Show speed boosted animation
