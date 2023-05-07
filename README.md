@@ -11,4 +11,5 @@ https://assetstore.unity.com/packages/2d/characters/pixel-adventure-1-155360
 # How to play
 
 Press [SPACE] to jump
+
 Use item with [1] [2] [3] [4]
