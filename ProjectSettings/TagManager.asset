@@ -15,6 +15,11 @@ TagManager:
   - Item3
   - Item4
   - Item5
+  - Music
+  - SFX
+  - Music Slider
+  - SFX_Buy
+  - SFX_Jump
   layers:
   - Default
   - TransparentFX

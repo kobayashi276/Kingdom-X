@@ -140,6 +140,9 @@ MonoBehaviour:
   jumpPower: 7
   runningSpeed: 4
   playerDeadAnimation: {fileID: 1029129899392030665, guid: 924792f7ab8d84346b54aeef7ea8f25a, type: 3}
+  speedBoostedAnimation: {fileID: 5133998249964305686, guid: 8afb13b7563c72841966a9d4251540de, type: 3}
+  jumpBoostedAnimation: {fileID: 8317874630674504742, guid: 6daab3f6fdc254e40a27649bf76eb68b, type: 3}
+  respawnAnimation: {fileID: 8653338149976168831, guid: b1292bd749fa8654f8c53c914166bcf3, type: 3}
 --- !u!95 &7322451654972583553
 Animator:
   serializedVersion: 5

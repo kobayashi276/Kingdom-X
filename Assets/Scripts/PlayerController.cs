@@ -21,6 +21,13 @@ public class PlayerController : MonoBehaviour
     private float boostSpeed;
     private float jumpBoost;
 
+    private AudioSource sfx_jump;
+    private AudioSource sfx_pickupenergy;
+    private AudioSource sfx_pickupgem;
+    private AudioSource sfx_hit;
+    private AudioSource sfx_respawn;
+
+
 
     private enum MovementState
     {
@@ -49,6 +56,13 @@ public class PlayerController : MonoBehaviour
         isInvin = false;
         speedBoostedAnimation.SetActive(false);
         jumpBoostedAnimation.SetActive(false);
+
+
+        sfx_jump = GameObject.Find("Jump").GetComponent<AudioSource>();
+        sfx_pickupenergy = GameObject.Find("Pickup_Energy").GetComponent<AudioSource>();
+        sfx_pickupgem = GameObject.Find("Pickup_Gem").GetComponent<AudioSource>();
+        sfx_hit = GameObject.Find("Hit").GetComponent<AudioSource>();
+        sfx_respawn = GameObject.Find("Respawn").GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -67,7 +81,8 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("Jump");
             rb.velocity = new Vector3(0, jumpPower*jumpBoost, 0); 
-            isJumping = true; 
+            isJumping = true;
+            sfx_jump.Play(0);
         }
 
         //Show speed boosted animation
@@ -118,6 +133,7 @@ public class PlayerController : MonoBehaviour
         resetBoostSpeed();
         resetJumpBoost();
         removeInvin();
+        sfx_respawn.Play();
         return true;
     }
 
@@ -158,6 +174,7 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Eat energy");
             gameController.eatItemAnimation(other.gameObject.transform.position);
             Destroy(other.gameObject);
+            sfx_pickupenergy.Play(0);
         }
         if (other.gameObject.CompareTag("Gem")){
             other.gameObject.SetActive(false);
@@ -165,6 +182,7 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Eat gem");
             gameController.eatItemAnimation(other.gameObject.transform.position);
             Destroy(other.gameObject);
+            sfx_pickupgem.Play(0);
         }
     }
 
@@ -181,8 +199,10 @@ public class PlayerController : MonoBehaviour
                 gameController.destroyEnemiesAnimation(other.transform.position);
                 if (!isInvin) gameController.setEnergy(-4);
                 gameController.setGem(2);
+                sfx_hit.Play(0);
             } 
             Destroy(other.gameObject);
+
         }
     }
 

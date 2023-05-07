@@ -13,6 +13,8 @@ public class ShopController : MonoBehaviour
     public TextMeshProUGUI item4Text;
     public TextMeshProUGUI item5Text;
 
+    private AudioSource sfx_buy;
+    private AudioSource sfx_cantbuy;
     private int currentGem;
     private int item1;
     private int item2;
@@ -23,6 +25,9 @@ public class ShopController : MonoBehaviour
     void Start(){
         LoadGame();
         alert.SetActive(false);
+
+        sfx_buy = GameObject.Find("SFX_Buy").GetComponent<AudioSource>();
+        sfx_cantbuy = GameObject.Find("SFX_Can't Buy").GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -111,12 +116,14 @@ public class ShopController : MonoBehaviour
     public void Item1(){
         if (currentGem<100){
             Debug.Log("Cant buy");
+            sfx_cantbuy.Play(0);
         }
         else{
             currentGem-=100;
             item1+=1;
             setAmmount(1,item1);
             updateGem();
+            sfx_buy.Play(0);
         }
     }
 
@@ -124,48 +131,57 @@ public class ShopController : MonoBehaviour
     public void Item2(){
         if (currentGem<100){
             Debug.Log("Cant buy");
+            sfx_cantbuy.Play(0);
         }
         else{
             currentGem-=100;
             item2+=1;
             setAmmount(2,item2);
             updateGem();
+            sfx_buy.Play(0);
         }
+        
     }
 
     public void Item3(){
         if (currentGem<100){
             Debug.Log("Cant buy");
+            sfx_cantbuy.Play(0);
         }
         else{
             currentGem-=100;
             item3+=1;
             setAmmount(3,item3);
             updateGem();
+            sfx_buy.Play(0);
         }
     }
 
     public void Item4(){
         if (currentGem<250){
             Debug.Log("Cant buy");
+            sfx_cantbuy.Play(0);
         }
         else{
             currentGem-=250;
             item4+=1;
             setAmmount(4,item4);
             updateGem();
+            sfx_buy.Play(0);
         }
     }
 
     public void Item5(){
         if (currentGem<500){
             Debug.Log("Cant buy");
+            sfx_cantbuy.Play(0);
         }
         else{
             currentGem-=500;
             item5+=1;
             setAmmount(5,item5);
             updateGem();
+            sfx_buy.Play(0);
         }
     }
 }

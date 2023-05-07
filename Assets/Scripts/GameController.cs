@@ -29,6 +29,10 @@ public class GameController : MonoBehaviour
     private bool isInitBackgroundEnabled;
     private bool isInitEnemiesEnabled;
     private float preX;
+
+    private AudioSource theme;
+    private AudioSource sfx_click;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -41,6 +45,9 @@ public class GameController : MonoBehaviour
         gameOverUI.SetActive(false);
         pauseUI.SetActive(false);
         preX = transform.position.x;
+
+        sfx_click = GameObject.Find("Click").GetComponent<AudioSource>();
+        theme = GameObject.Find("Theme").GetComponent<AudioSource>();
     }
 
     public void setEnergy(int ammount){
@@ -67,27 +74,32 @@ public class GameController : MonoBehaviour
     }
 
     public void gameOver(){
+        theme.Stop();
         gameOverUI.SetActive(true);
     }
 
     public void Pause(){
+        sfx_click.Play(0);
         pauseUI.SetActive(true);
         Time.timeScale = 0f;
     }
 
     public void Resume(){
+        sfx_click.Play(0);
         pauseUI.SetActive(false);
         Time.timeScale = 1f;
     }
 
     public void backToMenu()
     {
+        sfx_click.Play(0);
         Time.timeScale = 1f;
         UnityEngine.SceneManagement.SceneManager.LoadScene("Menu");
     }
 
     public void retry()
     {
+        sfx_click.Play(0);
         UnityEngine.SceneManagement.SceneManager.LoadScene("Gameplay");
     }
  

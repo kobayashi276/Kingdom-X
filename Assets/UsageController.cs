@@ -26,6 +26,8 @@ public class UsageController : MonoBehaviour
     private float timeSpeedBoosted;
     private float timeJumpBoosted;
     private float timeInvin;
+
+    private AudioSource sfx_boost;
     // Start is called before the first frame update
     void Start()
     {
@@ -44,6 +46,8 @@ public class UsageController : MonoBehaviour
         player = temp[0].GetComponent<PlayerController>();
         isBoosted = false;
         LoadGame();
+
+        sfx_boost = GameObject.Find("Boost").GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -151,6 +155,7 @@ public class UsageController : MonoBehaviour
             player.setEnergy(10);
             item1-=1;
             setAmmount(1,item1);
+            sfx_boost.Play(0);
         }
     }
 
@@ -161,6 +166,7 @@ public class UsageController : MonoBehaviour
             setAmmount(2,item2);
             isBoosted = true;
             timeSpeedBoosted = Time.time;
+            sfx_boost.Play(0);
         }
     }
 
@@ -171,6 +177,7 @@ public class UsageController : MonoBehaviour
             setAmmount(3,item3);
             isJumpBoosted = true;
             timeJumpBoosted = Time.time;
+            sfx_boost.Play(0);
         }
     }
 
@@ -181,6 +188,7 @@ public class UsageController : MonoBehaviour
             setAmmount(4,item4);
             isInvin = true;
             timeInvin = Time.time;
+            sfx_boost.Play(0);
         }
     }
 }
