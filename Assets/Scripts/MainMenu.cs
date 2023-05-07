@@ -7,17 +7,27 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    private AudioSource sfx_click;
     void Start(){
+        try
+        {
+            sfx_click = GameObject.Find("Click").GetComponent<AudioSource>();     
+        }
+        catch (System.Exception)
+        {
+            
+        }
 
     }
 
-
     public void PlayGame()
     {
+        sfx_click.Play(0);
         UnityEngine.SceneManagement.SceneManager.LoadScene("Gameplay");
     }
     public void QuitGame() {
         {
+            sfx_click.Play(0);
             Application.Quit();
         }
     }
@@ -28,21 +38,25 @@ public class MainMenu : MonoBehaviour
 
     public void goToSetting()
     {
+        sfx_click.Play(0);
         UnityEngine.SceneManagement.SceneManager.LoadScene("Setting Menu");
     }
 
         public void goToMission()
     {
+        sfx_click.Play(0);
         UnityEngine.SceneManagement.SceneManager.LoadScene("Shop");
     }
 
         public void goToUpgrades()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Shop");
+        sfx_click.Play(0);
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Upgrade");
     }
 
     public void goToAbout()
     {
+        sfx_click.Play(0);
         UnityEngine.SceneManagement.SceneManager.LoadScene("Abouts Menu");
     }
 }

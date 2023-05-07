@@ -21,6 +21,7 @@ TagManager:
   - SFX_Buy
   - SFX_Jump
   - Gem Result
+  - Score
   layers:
   - Default
   - TransparentFX
