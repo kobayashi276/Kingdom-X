@@ -28,7 +28,9 @@ public class GameController : MonoBehaviour
     private bool isPreviousNullTerrian;
     private bool isInitBackgroundEnabled;
     private bool isInitEnemiesEnabled;
+    private bool isGameOver;
     private float preX;
+    private UsageController usageController;
 
     private AudioSource theme;
     private AudioSource sfx_click;
@@ -45,7 +47,8 @@ public class GameController : MonoBehaviour
         gameOverUI.SetActive(false);
         pauseUI.SetActive(false);
         preX = transform.position.x;
-
+        usageController = GameObject.Find("Usage").GetComponent<UsageController>();
+        isGameOver = false;
         sfx_click = GameObject.Find("Click").GetComponent<AudioSource>();
         theme = GameObject.Find("Theme").GetComponent<AudioSource>();
     }
@@ -75,7 +78,12 @@ public class GameController : MonoBehaviour
 
     public void gameOver(){
         theme.Stop();
+        if (!isGameOver){
+            isGameOver=true;
+            usageController.SaveGame();
+        }
         gameOverUI.SetActive(true);
+        GameObject.Find("GemResult").GetComponent<TextMeshProUGUI>().text = usageController.getCurrentGem();
     }
 
     public void Pause(){
@@ -101,6 +109,11 @@ public class GameController : MonoBehaviour
     {
         sfx_click.Play(0);
         UnityEngine.SceneManagement.SceneManager.LoadScene("Gameplay");
+    }
+
+    public void shop(){
+        sfx_click.Play(0);
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Shop");
     }
  
     // Update is called once per frame

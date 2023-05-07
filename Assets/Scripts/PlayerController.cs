@@ -57,12 +57,19 @@ public class PlayerController : MonoBehaviour
         speedBoostedAnimation.SetActive(false);
         jumpBoostedAnimation.SetActive(false);
 
+        try
+        {
+            sfx_jump = GameObject.Find("Jump").GetComponent<AudioSource>();
+            sfx_pickupenergy = GameObject.Find("Pickup_Energy").GetComponent<AudioSource>();
+            sfx_pickupgem = GameObject.Find("Pickup_Gem").GetComponent<AudioSource>();
+            sfx_hit = GameObject.Find("Hit").GetComponent<AudioSource>();
+            sfx_respawn = GameObject.Find("Respawn").GetComponent<AudioSource>(); 
+        }
+        catch (System.Exception)
+        {
+            
+        }
 
-        sfx_jump = GameObject.Find("Jump").GetComponent<AudioSource>();
-        sfx_pickupenergy = GameObject.Find("Pickup_Energy").GetComponent<AudioSource>();
-        sfx_pickupgem = GameObject.Find("Pickup_Gem").GetComponent<AudioSource>();
-        sfx_hit = GameObject.Find("Hit").GetComponent<AudioSource>();
-        sfx_respawn = GameObject.Find("Respawn").GetComponent<AudioSource>();
     }
 
     // Update is called once per frame

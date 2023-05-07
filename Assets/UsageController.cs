@@ -19,6 +19,7 @@ public class UsageController : MonoBehaviour
     private int item3;
     private int item4;
     private int item5;
+    private int pickupGem;
     
     private bool isBoosted;
     private bool isJumpBoosted;
@@ -88,12 +89,17 @@ public class UsageController : MonoBehaviour
         }
     }
 
-    private void SaveGame(){
+    public string getCurrentGem(){
+        return currentGem.ToString() + "(+" + pickupGem.ToString() + ")";
+    }
+
+    public void SaveGame(){
         //Gem, Item1, Item2, Item3, Item4, Item,5
         string saveString = "";
         GameObject[] temp = GameObject.FindGameObjectsWithTag("Gem_Count");
-        int gem = int.Parse(temp[0].GetComponent<TextMeshProUGUI>().text);
-        saveString += gem.ToString() + "," + item1.ToString() + "," + item2.ToString() + "," + item3.ToString() + "," + item4.ToString() + "," + item5.ToString() + ",";
+        pickupGem = int.Parse(temp[0].GetComponent<TextMeshProUGUI>().text);
+        currentGem = pickupGem + currentGem;
+        saveString += currentGem.ToString() + "," + item1.ToString() + "," + item2.ToString() + "," + item3.ToString() + "," + item4.ToString() + "," + item5.ToString() + ",";
         File.WriteAllText(Application.dataPath + "/data.save", saveString);
         Debug.Log(saveString);
     }
@@ -112,6 +118,8 @@ public class UsageController : MonoBehaviour
     private void ReadData(string saveString){
         string[] saveSplit = saveString.Split(",");
         Debug.Log(saveSplit.Length);
+        currentGem = int.Parse(saveSplit[0].ToString());
+        Debug.Log(currentGem);
         // GameObject[] temp = GameObject.FindGameObjectsWithTag("Gem_Count");
         // temp[0].GetComponent<TextMeshProUGUI>().text = saveSplit[0].ToString();
         item1Text.text = saveSplit[1].ToString();
