@@ -1982,6 +1982,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7549518409066182170, guid: 31cd339711128074ea7fce6a8e8d042d, type: 3}
+      propertyPath: jumpBoostedAnimation
+      value: 
+      objectReference: {fileID: 8317874630674504742, guid: 6daab3f6fdc254e40a27649bf76eb68b, type: 3}
+    - target: {fileID: 7549518409066182170, guid: 31cd339711128074ea7fce6a8e8d042d, type: 3}
+      propertyPath: speedBoostedAnimation
+      value: 
+      objectReference: {fileID: 5133998249964305686, guid: 8afb13b7563c72841966a9d4251540de, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31cd339711128074ea7fce6a8e8d042d, type: 3}
 --- !u!1001 &8561547654129934508

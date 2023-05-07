@@ -2275,6 +2275,14 @@ PrefabInstance:
       propertyPath: runningSpeed
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7322451654972583552, guid: 8b02e82cfb38d3840af7ea9c6d24f48e, type: 3}
+      propertyPath: jumpBoostedAnimation
+      value: 
+      objectReference: {fileID: 8317874630674504742, guid: 6daab3f6fdc254e40a27649bf76eb68b, type: 3}
+    - target: {fileID: 7322451654972583552, guid: 8b02e82cfb38d3840af7ea9c6d24f48e, type: 3}
+      propertyPath: speedBoostedAnimation
+      value: 
+      objectReference: {fileID: 5133998249964305686, guid: 8afb13b7563c72841966a9d4251540de, type: 3}
     - target: {fileID: 7322451654972583563, guid: 8b02e82cfb38d3840af7ea9c6d24f48e, type: 3}
       propertyPath: m_Name
       value: Player

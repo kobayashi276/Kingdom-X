@@ -719,6 +719,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Terrian (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 2150895803817090934, guid: ca5955a5857d2704ab73486d6648bec3, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2150895803848771590, guid: ca5955a5857d2704ab73486d6648bec3, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ca5955a5857d2704ab73486d6648bec3, type: 3}
 --- !u!1 &364903414
@@ -1703,37 +1711,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 858281895}
   m_CullTransparentMesh: 1
---- !u!1 &871926042 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2150895803817090934, guid: ca5955a5857d2704ab73486d6648bec3, type: 3}
-  m_PrefabInstance: {fileID: 2150895803502024300}
-  m_PrefabAsset: {fileID: 0}
---- !u!61 &871926045
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 871926042}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
 --- !u!1 &939082061
 GameObject:
   m_ObjectHideFlags: 0
@@ -3023,6 +3000,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Terrian (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 2150895803817090934, guid: ca5955a5857d2704ab73486d6648bec3, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2150895803848771590, guid: ca5955a5857d2704ab73486d6648bec3, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ca5955a5857d2704ab73486d6648bec3, type: 3}
 --- !u!1 &1237952305
@@ -3477,6 +3462,14 @@ PrefabInstance:
     - target: {fileID: 2150895803817090934, guid: ca5955a5857d2704ab73486d6648bec3, type: 3}
       propertyPath: m_Name
       value: Terrian (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2150895803817090934, guid: ca5955a5857d2704ab73486d6648bec3, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2150895803848771590, guid: ca5955a5857d2704ab73486d6648bec3, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ca5955a5857d2704ab73486d6648bec3, type: 3}
@@ -4796,6 +4789,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Terrian (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 2150895803817090934, guid: ca5955a5857d2704ab73486d6648bec3, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2150895803848771590, guid: ca5955a5857d2704ab73486d6648bec3, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ca5955a5857d2704ab73486d6648bec3, type: 3}
 --- !u!1 &1580077310
@@ -5060,6 +5061,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Terrian (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 2150895803817090934, guid: ca5955a5857d2704ab73486d6648bec3, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2150895803848771590, guid: ca5955a5857d2704ab73486d6648bec3, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ca5955a5857d2704ab73486d6648bec3, type: 3}
 --- !u!1 &1625707188
@@ -5251,6 +5260,14 @@ PrefabInstance:
     - target: {fileID: 2150895803817090934, guid: ca5955a5857d2704ab73486d6648bec3, type: 3}
       propertyPath: m_Name
       value: Terrian
+      objectReference: {fileID: 0}
+    - target: {fileID: 2150895803817090934, guid: ca5955a5857d2704ab73486d6648bec3, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2150895803848771590, guid: ca5955a5857d2704ab73486d6648bec3, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ca5955a5857d2704ab73486d6648bec3, type: 3}
@@ -6292,6 +6309,14 @@ PrefabInstance:
     - target: {fileID: 2150895803817090934, guid: ca5955a5857d2704ab73486d6648bec3, type: 3}
       propertyPath: m_Name
       value: Terrian (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2150895803817090934, guid: ca5955a5857d2704ab73486d6648bec3, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2150895803848771590, guid: ca5955a5857d2704ab73486d6648bec3, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ca5955a5857d2704ab73486d6648bec3, type: 3}
@@ -7345,6 +7370,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Terrain
       objectReference: {fileID: 0}
+    - target: {fileID: 2150895803817090934, guid: ca5955a5857d2704ab73486d6648bec3, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2150895803848771590, guid: ca5955a5857d2704ab73486d6648bec3, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ca5955a5857d2704ab73486d6648bec3, type: 3}
 --- !u!1001 &3799403002085460085
@@ -7412,10 +7445,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 7322451654972583552, guid: 8b02e82cfb38d3840af7ea9c6d24f48e, type: 3}
-      propertyPath: respawnAnimation
-      value: 
-      objectReference: {fileID: 8653338149976168831, guid: b1292bd749fa8654f8c53c914166bcf3, type: 3}
-    - target: {fileID: 7322451654972583552, guid: 8b02e82cfb38d3840af7ea9c6d24f48e, type: 3}
       propertyPath: jumpBoostedAnimation
       value: 
       objectReference: {fileID: 285189525}
@@ -7427,25 +7456,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 7322451654972583563, guid: 8b02e82cfb38d3840af7ea9c6d24f48e, type: 3}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 7322451654972583566, guid: 8b02e82cfb38d3840af7ea9c6d24f48e, type: 3}
-      propertyPath: m_Color.a
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7322451654972583567, guid: 8b02e82cfb38d3840af7ea9c6d24f48e, type: 3}
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7322451654972583567, guid: 8b02e82cfb38d3840af7ea9c6d24f48e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.61
+      value: -8.58
       objectReference: {fileID: 0}
     - target: {fileID: 7322451654972583567, guid: 8b02e82cfb38d3840af7ea9c6d24f48e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.35
+      value: -2.06
       objectReference: {fileID: 0}
     - target: {fileID: 7322451654972583567, guid: 8b02e82cfb38d3840af7ea9c6d24f48e, type: 3}
       propertyPath: m_LocalPosition.z
