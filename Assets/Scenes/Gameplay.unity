@@ -2511,37 +2511,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1109812868}
   m_CullTransparentMesh: 1
---- !u!1 &1136571347
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1136571348}
-  m_Layer: 0
-  m_Name: FeetPos
-  m_TagString: Untagged
-  m_Icon: {fileID: 7866945982896999795, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1136571348
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1136571347}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.01, z: 0}
-  m_LocalScale: {x: 0, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1750723449}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1140979700
 GameObject:
   m_ObjectHideFlags: 0
@@ -5626,11 +5595,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7322451654972583563, guid: 8b02e82cfb38d3840af7ea9c6d24f48e, type: 3}
   m_PrefabInstance: {fileID: 7322451653498848760}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &1750723449 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7322451654972583567, guid: 8b02e82cfb38d3840af7ea9c6d24f48e, type: 3}
-  m_PrefabInstance: {fileID: 7322451653498848760}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1752090287
 GameObject:
   m_ObjectHideFlags: 0
@@ -7481,30 +7445,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 7322451654972583552, guid: 8b02e82cfb38d3840af7ea9c6d24f48e, type: 3}
-      propertyPath: feetPos
-      value: 
-      objectReference: {fileID: 1136571348}
-    - target: {fileID: 7322451654972583552, guid: 8b02e82cfb38d3840af7ea9c6d24f48e, type: 3}
-      propertyPath: jumpTime
-      value: 0.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 7322451654972583552, guid: 8b02e82cfb38d3840af7ea9c6d24f48e, type: 3}
-      propertyPath: jumpPower
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7322451654972583552, guid: 8b02e82cfb38d3840af7ea9c6d24f48e, type: 3}
-      propertyPath: checkRadius
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7322451654972583552, guid: 8b02e82cfb38d3840af7ea9c6d24f48e, type: 3}
-      propertyPath: respawnAnimation
-      value: 
-      objectReference: {fileID: 8653338149976168831, guid: b1292bd749fa8654f8c53c914166bcf3, type: 3}
-    - target: {fileID: 7322451654972583552, guid: 8b02e82cfb38d3840af7ea9c6d24f48e, type: 3}
-      propertyPath: whatIsGround.m_Bits
-      value: 64
-      objectReference: {fileID: 0}
-    - target: {fileID: 7322451654972583552, guid: 8b02e82cfb38d3840af7ea9c6d24f48e, type: 3}
       propertyPath: jumpBoostedAnimation
       value: 
       objectReference: {fileID: 285189525}
@@ -7515,18 +7455,6 @@ PrefabInstance:
     - target: {fileID: 7322451654972583563, guid: 8b02e82cfb38d3840af7ea9c6d24f48e, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 7322451654972583563, guid: 8b02e82cfb38d3840af7ea9c6d24f48e, type: 3}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 7322451654972583564, guid: 8b02e82cfb38d3840af7ea9c6d24f48e, type: 3}
-      propertyPath: m_GravityScale
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7322451654972583566, guid: 8b02e82cfb38d3840af7ea9c6d24f48e, type: 3}
-      propertyPath: m_Color.a
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7322451654972583567, guid: 8b02e82cfb38d3840af7ea9c6d24f48e, type: 3}
       propertyPath: m_RootOrder
