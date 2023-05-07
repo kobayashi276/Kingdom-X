@@ -199,13 +199,25 @@ public class PlayerController : MonoBehaviour
         }
 
         if (other.gameObject.CompareTag("Enemies")){
-            if (gameController.getEnergy()<4 && !isInvin){
+            int enemyHealth = 0;
+            if (other.gameObject.name.Contains("Enemies1")){
+                enemyHealth = 6;
+            }
+            else if (other.gameObject.name.Contains("Enemies2")){
+                enemyHealth = 8;
+            }
+            else if (other.gameObject.name.Contains("Enemies3")){
+                enemyHealth = 4;
+            }
+            Debug.Log(other.gameObject.name);
+            if (gameController.getEnergy()<enemyHealth && !isInvin){
                 Dead();
             } 
             else{
                 gameController.destroyEnemiesAnimation(other.transform.position);
-                if (!isInvin) gameController.setEnergy(-4);
-                gameController.setGem(2);
+                if (!isInvin) gameController.setEnergy(-enemyHealth);
+                gameController.setGem(enemyHealth/2);
+                gameController.setScore(enemyHealth);
                 sfx_hit.Play(0);
             } 
             Destroy(other.gameObject);

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using System;
+using System.IO;
 
 public class GameController : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class GameController : MonoBehaviour
     public GameObject player;
     public TextMeshProUGUI energyCount;
     public TextMeshProUGUI gemCount;
+    public TextMeshProUGUI scoreUI;
+    public TextMeshProUGUI highscoreUI;
     public GameObject terrain;
     public GameObject energy;
     public GameObject gem;
@@ -17,6 +20,8 @@ public class GameController : MonoBehaviour
     public GameObject eatItem;
     public GameObject destroyEnemies;
     public GameObject enemies;
+    public GameObject enemies2;
+    public GameObject enemies3;
     public GameObject gameOverUI;
     public GameObject pauseUI;
     // public GameObject terrainDestroyer;
@@ -31,6 +36,9 @@ public class GameController : MonoBehaviour
     private bool isGameOver;
     private float preX;
     private UsageController usageController;
+    private int score;
+    private float timeScore;
+    private int highscore;
 
     private AudioSource theme;
     private AudioSource sfx_click;
@@ -49,8 +57,16 @@ public class GameController : MonoBehaviour
         preX = transform.position.x;
         usageController = GameObject.Find("Usage").GetComponent<UsageController>();
         isGameOver = false;
+        score = 0;
+        loadHighScore();
+
         sfx_click = GameObject.Find("Click").GetComponent<AudioSource>();
         theme = GameObject.Find("Theme").GetComponent<AudioSource>();
+    }
+
+    public void setScore(float score){
+        this.score += (int)score;
+        scoreUI.text = this.score.ToString();
     }
 
     public void setEnergy(int ammount){
@@ -84,6 +100,13 @@ public class GameController : MonoBehaviour
         }
         gameOverUI.SetActive(true);
         GameObject.Find("GemResult").GetComponent<TextMeshProUGUI>().text = usageController.getCurrentGem();
+        string isHighScore =  "";
+        if (score>highscore){
+            saveHighScore();
+            isHighScore = "(NEW RECORD)";
+        }
+        GameObject.Find("HighscoreResult").GetComponent<TextMeshProUGUI>().text = "Highscore: " + highscore.ToString();
+        GameObject.Find("ScoreResult").GetComponent<TextMeshProUGUI>().text = "Score: " + scoreUI.text + " " + isHighScore;
     }
 
     public void Pause(){
@@ -119,6 +142,15 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!isGameOver){
+            timeScore+=Time.deltaTime;
+            if (timeScore>1){
+                timeScore-=1;
+                setScore(1);
+            }
+
+        }
+
         //Move camera with player
         playerPosition = player.transform.position;
         camera.transform.position = new Vector3(playerPosition.x + 7.33f,cameraPosition.y,cameraPosition.z);
@@ -176,7 +208,16 @@ public class GameController : MonoBehaviour
 
         if (Math.Round(playerPosition.x)%24==0 && isInitEnemiesEnabled){
             Debug.Log("Spawn Enemy");
-            GameObject instance = Instantiate(enemies);
+            GameObject instance = null;
+            if (randomNumber<0.5){
+                instance = Instantiate(enemies);
+            }
+            else if (randomNumber<0.9){
+                instance = Instantiate(enemies3);
+            }
+            else{
+                instance = Instantiate(enemies2);
+            }
             instance.transform.position = new Vector3((float)Math.Round(playerPosition.x) + 24,0,0);
             isInitEnemiesEnabled = false;
         }
@@ -186,11 +227,27 @@ public class GameController : MonoBehaviour
 
     }
 
+    private void loadHighScore(){
+        string saveString = "";
+        if (File.Exists(Application.dataPath + "/highscore.save")){
+            saveString = File.ReadAllText(Application.dataPath + "/highscore.save");
+        }
+        else{
+            saveString = "0";
+        }
+        highscore = int.Parse(saveString);
+    }
+
+    private void saveHighScore(){
+        string saveString = scoreUI.text;
+        File.WriteAllText(Application.dataPath + "/highscore.save", saveString);
+    }
+
     //Spawn energy
     private bool spawnEnergy(){
         System.Random random = new System.Random();
         double randomNumber = random.NextDouble();
-        if (randomNumber<0.3){
+        if (randomNumber<0.15){
             GameObject instance = Instantiate(energy);
             random = new System.Random();
             float position = (float)random.NextDouble() * 3;
@@ -205,7 +262,7 @@ public class GameController : MonoBehaviour
     private bool spawnGem(){
         System.Random random = new System.Random();
         double randomNumber = random.NextDouble();
-        if (randomNumber<0.4){
+        if (randomNumber<0.2){
             GameObject instance = Instantiate(gem);
             random = new System.Random();
             float position = (float)random.NextDouble() * 3;
