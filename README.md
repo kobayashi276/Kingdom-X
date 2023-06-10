@@ -1,5 +1,7 @@
-# Game_Development_Final
+# Kingdom X
 Unity ver 2021.3.16f.1
+A Zombies Natsumi's clone game.
+For research purposes only, not for commercial purposes.
 
 Used assets:
 
